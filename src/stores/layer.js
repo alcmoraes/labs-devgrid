@@ -1,14 +1,14 @@
 // @flow
 
 import _ from 'lodash';
-import Alt from '../vendors/alt';
+import { Alt } from '../services/alt';
 import LayerActions from '../actions/layer';
-import Alerty from '../vendors/alerty.js';
+import Utils from '../services/utils';
 
 class LayerStore {
 
     layerStore_Error: ?string;
-    bindListeners: function;
+    bindListeners: Function;
 
     constructor() {
 
@@ -20,7 +20,10 @@ class LayerStore {
 
     }
 
-    handleThrowError( error: string ) {
+    handleThrowError( error: any ) {
+        console.error( error );        
+        error = error.message || error;
+        Utils.Alerty( error );
         this.layerStore_Error = error;
     }
 }

@@ -7,6 +7,7 @@ import 'moment/locale/pt-br';
 
 import {
     BrowserRouter as Router,
+    Switch,
     Route
 } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ import './scss/index.css';
 
 // Routers
 import Home from './routers/home';
+import Search from './routers/search';
 
 // Service Worker
 import registerServiceWorker from './registerServiceWorker';
@@ -27,7 +29,11 @@ if(rootElement == null) throw new Error('No Root');
 
 ReactDOM.render(
     <Router>
-        <Route path="/" component={Home}/>
+        <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/search/:book" component={Search}/>
+            <Route exact path="/my-books" component={Home}/>
+        </Switch>
     </Router>,
     rootElement
 );

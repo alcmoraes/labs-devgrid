@@ -1,0 +1,33 @@
+// @flow
+
+import _ from 'lodash';
+import { Alt } from '../services/alt';
+import OpenLibraryActions from '../actions/open_library';
+import Alerty from '../vendors/alerty.js';
+
+class OpenLibrarySTore {
+
+    openLibraryStore_Books: ?Array<Object>;
+    bindListeners: Function;
+
+    constructor() {
+
+        this.openLibraryStore_Books = null;
+
+        this.bindListeners({
+            handleFetchBooks: OpenLibraryActions.FETCH_BOOKS,
+            handleSetBooks: OpenLibraryActions.SET_BOOKS,
+        });
+
+    }
+
+    handleFetchBooks(): void {
+        return;
+    }
+
+    handleSetBooks( books: Array<Object> ): void {
+        this.openLibraryStore_Books = books;
+    }
+}
+
+export default Alt.createStore(OpenLibrarySTore, 'OpenLibrarySTore');

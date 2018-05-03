@@ -1,21 +1,33 @@
 // @flow
 
 import _ from 'lodash';
+import NProgress from 'nprogress';
+
+const Modes = {
+    'cors': 'cors',
+    'no-cors': 'no-cors',
+    'same-origin': 'same-origin'
+}
 
 class Api {
 
     endpoint: string;
+    mode: $Keys<typeof Modes>;
     headers: Object;
 
     constructor(){
 
         this.endpoint = '';
+        this.mode = 'no-cors';
 
         this.headers = {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Accept': 'application/json'
         }
 
+    }
+
+    setMode( mode: $Keys<typeof Modes> ): void {
+        this.mode = mode;
     }
 
     /**
@@ -34,7 +46,7 @@ class Api {
      * @return {void}
      */
     setHeaders(headers: Object, replace?: boolean = false): void {
-        this.headers = replace ? headers : _.merge(this.headers, headers);
+        this.headers = replace ? headers : _.merge( this.headers, headers );
         return;
     }
     
@@ -50,12 +62,12 @@ class Api {
                 let data = await fetch((base || this.endpoint) + url, {
                     method: 'GET',
                     headers: new Headers(this.headers),
-                    mode: 'cors',
+                    mode: this.mode,
                     cache: 'default'
                 });
-                resolve(data.json());
-            } catch (err) {
-                reject(err);
+                resolve( data.json() );
+            } catch ( ERR ) {
+                reject( ERR );
             }
         });
     }
@@ -72,12 +84,12 @@ class Api {
                 let data = await fetch((base || this.endpoint) + url, {
                     method: 'DELETE',
                     headers: new Headers(this.headers),
-                    mode: 'cors',
+                    mode: this.mode,
                     cache: 'default'
                 });
                 resolve(data.json());
-            } catch (err) {
-                reject(err);
+            } catch ( ERR ) {
+                reject( ERR );
             }
         });
     }
@@ -94,14 +106,14 @@ class Api {
             try {
                 let data = await fetch((base || this.endpoint) + url, {
                     method: 'PUT',
-                    headers: new Headers(_.merge(_.clone(this.headers), { 'Content-Type': 'application/json' })),
+                    headers: new Headers(this.headers),
                     body: JSON.stringify(body),
-                    mode: 'cors',
+                    mode: this.mode,
                     cache: 'default'
                 });
                 resolve(data.json());
-            } catch (err) {
-                reject(err);
+            } catch ( ERR ) {
+                reject( ERR );
             }
         });
     }
@@ -118,15 +130,14 @@ class Api {
             try {
                 let data = await fetch((base || this.endpoint) + url, {
                     method: 'POST',
-                    headers: new Headers(_.merge(_.clone(this.headers), {'Content-Type': 'application/json'})),
+                    headers: new Headers(this.headers),
                     body: JSON.stringify(body),
-                    mode: 'cors',
+                    mode: this.mode,
                     cache: 'default'
                 });
                 resolve(data.json());
-            } catch (err) {
-                console.log(err);
-                reject(err);
+            } catch ( ERR ) {
+                reject( ERR );
             }
         });
     }

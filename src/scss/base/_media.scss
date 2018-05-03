@@ -1,0 +1,14 @@
+$mobile-xs : "screen and (max-width: 767px)";
+$mobile : "screen and (max-width: 991px)";
+$desktop : "screen and (min-width: 992px)";
+$tablet : "screen and (min-width: 992px) and (max-width: 1199px)";
+$desktop-xl : "screen and (min-width: 1200px)";
+
+@mixin media-query($media-query) {
+  @if $media-query == mobile {
+    @media all and (max-width: 991px) { @content; }
+  }
+  @if $media-query == desktop {
+    @media all and (min-width: 992px) { @content; }
+  }
+}

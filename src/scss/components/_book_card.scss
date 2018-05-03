@@ -1,0 +1,33 @@
+section.books-shelf {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    .book-card-wrapper {
+        padding: 5px;
+        border: solid 1px rgb(240, 240, 240);
+        width: 350px;
+        margin: rem(5px);
+        box-shadow: 0px 3px 5px rgba( 0, 0, 0, .2 );
+        .cover-wrapper {
+            img {
+                width: 100%;
+            }
+            float: left;
+            overflow: hidden;
+            width: rem(100px);
+            height: (120px);
+            background-size: cover;
+            background-position: center center;
+            margin-right: rem(15px);
+        }
+        .title {
+            font-family: 'Oswald', sans-serif;
+            font-size: rem(17px);
+            display: block;
+        }
+        .author {
+            font-size: rem(14px);
+            margin-top: 0;
+        }
+    }
+}

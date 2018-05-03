@@ -1,8 +1,7 @@
 // @flow
 
-import { Alt, Dispatcher } from '../vendors/alt';
+import { Alt, Dispatcher } from '../services/alt';
 import NProgress from 'nprogress/nprogress';
-import Alerty from '../vendors/alerty.js';
 
 class LayerActions {
     

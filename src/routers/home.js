@@ -1,14 +1,30 @@
 //@flow 
 
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 
-export default class Home extends Component<{}> {
+import Screen from '../components/screen';
+
+import Layout from '../components/layout';
+
+export default class Home extends Screen {
+
+  constructor( props: any ){
+    super( props );
+
+    this.state = super.state;
+
+  }
+
+  componentDidMount(): void {
+    super.componentDidMount();
+    super._getAction('Book').fetchMyBooks();
+  }
 
   render() {
     return (
-      <h1>
-        Hey ya.
-      </h1>
+      <Layout { ...this.props }>
+        {JSON.stringify( this.state )}
+      </Layout>
     );
   }
 

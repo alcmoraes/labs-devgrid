@@ -1,6 +1,21 @@
 // @flow
 
+import Alerty from '../vendors/alerty';
+
+import moment from 'moment-timezone';
+import 'moment/locale/pt-br';
+import _ from 'lodash';
+
+moment.locale('pt-BR');
+moment.tz.setDefault("America/Sao_Paulo");
+
 class Utils {
+
+    moment = moment;
+
+    Alerty( message: string ) {
+        return Alerty.alert( message );
+    }
 
     isMobile(): boolean {
         var isMobile = false;
@@ -19,7 +34,7 @@ class Utils {
         return false;
     }
 
-    scrollToElement(destination: ?HTMLElement = null, duration?: number = 200, easing?: string = 'linear', threshold?: integer = 0, callback?: function): void{
+    scrollToElement(destination: ?HTMLElement = null, duration?: number = 200, easing?: string = 'linear', threshold?: number = 0, callback?: Function): void{
         
         if(!destination) return;
     

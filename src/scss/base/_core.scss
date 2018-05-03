@@ -1,0 +1,28 @@
+$rem-baseline: 16px;
+
+html {
+    @include rem-baseline;
+
+    @media #{$mobile} {
+        @include rem-baseline(70%);
+    }
+
+    @media #{$desktop} {
+        @include rem-baseline(100%);
+    }
+}
+
+.clearfix {
+    &:before, &:after {
+        display: table;
+        content:"";
+        // Fixes Opera/contenteditable bug: // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952 line-height: 0;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+a, button {
+    outline : none!important;
+}

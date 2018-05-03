@@ -4,9 +4,9 @@
         "node": true
     },
     "plugins": [
-        "google",
         "flowtype"
     ],
+    "extends": "google",
     "rules": {
         "array-bracket-spacing": [ "error", "always" ],
         "arrow-parens": ["error", "always"],
