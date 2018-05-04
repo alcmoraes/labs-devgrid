@@ -12,7 +12,7 @@ class OpenLibrarySTore {
 
     constructor() {
 
-        this.openLibraryStore_Books = null;
+        this.openLibraryStore_Books = [];
 
         this.bindListeners({
             handleFetchBooks: OpenLibraryActions.FETCH_BOOKS,
@@ -22,7 +22,7 @@ class OpenLibrarySTore {
     }
 
     handleFetchBooks(): void {
-        return;
+        this.openLibraryStore_Books = [];
     }
 
     handleSetBooks( books: Array<Object> ): void {

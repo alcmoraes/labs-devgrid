@@ -1,6 +1,7 @@
 //@flow 
 
 import React from 'react';
+import _ from 'lodash';
 
 import Screen from '../components/screen';
 
@@ -12,14 +13,13 @@ export default class Search extends Screen {
 
   constructor( props: any ){
     super( props );
-
     this.state = super.state;
-
   }
 
   componentDidMount(): void {
     super.componentDidMount();
     super._getAction( 'OpenLibrary' ).fetchBooks( this.props.match.params.book );
+    super._getAction( 'Book' ).fetchMyBooks();
   }
 
   componentWillUpdate(nextProps: any, nextState: any): void {
@@ -32,13 +32,15 @@ export default class Search extends Screen {
     return (
       <Layout { ...this.props }>
         <section className="books-shelf">
-          {this.state && this.state.openLibraryStore_Books ? (
+          { this.state ? (
             this.state.openLibraryStore_Books.map((b, i) => {
+              let maBook = _.find( this.state.bookStore_MyBooks, (mB) => mB.key === b.key );
+              if( maBook ) console.log(`${maBook.key} found!`);
               return (
-                  <BookCard key={i} book={b} />
+                  <BookCard key={i} read={maBook ? maBook.read : false} onLibrary={Boolean( maBook )} book={b} />
               )
             })
-          ) : null}
+          ) : null }
         </section>
       </Layout>
     );

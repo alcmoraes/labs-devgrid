@@ -6418,7 +6418,7 @@ html {
   font-size: 100%; }
   @media screen and (max-width: 991px) {
     html {
-      font-size: 70%; } }
+      font-size: 90%; } }
   @media screen and (min-width: 992px) {
     html {
       font-size: 100%; } }
@@ -6438,6 +6438,7 @@ section.books-shelf {
   flex-flow: row wrap;
   justify-content: space-evenly; }
   section.books-shelf .book-card-wrapper {
+    position: relative;
     padding: 5px;
     border: solid 1px #f0f0f0;
     width: 350px;
@@ -6460,3 +6461,24 @@ section.books-shelf {
     section.books-shelf .book-card-wrapper .author {
       font-size: 0.875rem;
       margin-top: 0; }
+    section.books-shelf .book-card-wrapper .options {
+      display: block;
+      position: absolute;
+      bottom: 0.3125rem;
+      right: 0.3125rem; }
+      section.books-shelf .book-card-wrapper .options button {
+        margin-left: 0.1875rem;
+        font-size: 0.75rem;
+        font-weight: bold;
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        border: none;
+        padding: 0.1875rem 0.6875rem 0.25rem; }
+        section.books-shelf .book-card-wrapper .options button.bg-red {
+          background: #F44336;
+          text-shadow: 0px 1px 0px #D32F2F; }
+        section.books-shelf .book-card-wrapper .options button.bg-green {
+          background: #8BC34A;
+          text-shadow: 0px 1px 0px #388E3C; }
+        section.books-shelf .book-card-wrapper .options button i {
+          margin-right: 0.3125rem; }

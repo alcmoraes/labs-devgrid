@@ -3,6 +3,7 @@ section.books-shelf {
     flex-flow: row wrap;
     justify-content: space-evenly;
     .book-card-wrapper {
+        position: relative;        
         padding: 5px;
         border: solid 1px rgb(240, 240, 240);
         width: 350px;
@@ -28,6 +29,32 @@ section.books-shelf {
         .author {
             font-size: rem(14px);
             margin-top: 0;
+        }
+        .options {
+            display: block;
+            position: absolute;
+            bottom: rem(5px);
+            right: rem(5px);
+            button {
+                &.bg-red {
+                    background: #F44336;
+                    text-shadow: 0px 1px 0px #D32F2F;
+                }
+                &.bg-green {
+                    background: #8BC34A;
+                    text-shadow: 0px 1px 0px #388E3C;
+                }
+                margin-left: rem(3px);
+                font-size: rem(12px);
+                font-weight: bold;
+                font-family: 'Oswald', sans-serif;
+                text-transform: uppercase;
+                border: none;
+                padding: rem(3px 11px 4px);
+                i {
+                    margin-right: rem(5px);
+                }
+            }
         }
     }
 }

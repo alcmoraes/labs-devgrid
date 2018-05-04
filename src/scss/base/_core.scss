@@ -4,7 +4,7 @@ html {
     @include rem-baseline;
 
     @media #{$mobile} {
-        @include rem-baseline(70%);
+        @include rem-baseline(90%);
     }
 
     @media #{$desktop} {
