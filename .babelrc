@@ -1,0 +1,28 @@
+{
+    "presets": [
+      ["env", { "targets": { "modules": false, "esmodules": true } } ],
+      "react-app",
+      "stage-3"
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "transform-react-jsx",
+      "transform-flow-strip-types",
+      "syntax-dynamic-import"
+    ],
+    "env": {
+        "test": {
+          "presets": [
+            ["env", { "targets": { "modules": false, "esmodules": true } } ],
+            "react-app",
+            "stage-3"
+          ],
+          "plugins": [
+            "transform-object-rest-spread",
+            "transform-react-jsx",
+            "transform-flow-strip-types",
+            "syntax-dynamic-import"
+          ]
+        }
+    }
+}
