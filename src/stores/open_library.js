@@ -30,4 +30,4 @@ class OpenLibrarySTore {
     }
 }
 
-export default Alt.createStore(OpenLibrarySTore, 'OpenLibrarySTore');
+export default Alt.createStore( OpenLibrarySTore, 'OpenLibrarySTore');

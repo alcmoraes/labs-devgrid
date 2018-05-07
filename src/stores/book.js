@@ -43,4 +43,4 @@ class BookStore {
     }
 }
 
-export default Alt.createStore(BookStore, 'BookStore');
+export default Alt.createStore( BookStore, 'BookStore');
