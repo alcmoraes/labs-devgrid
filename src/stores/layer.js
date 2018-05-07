@@ -22,7 +22,7 @@ class LayerStore {
     handleThrowError( error: any ) {
       console.error( error );
       error = error.message || error;
-      Utils.Alerty( error );
+      if ( document ) Utils.Alerty( error );
       this.layerStore_Error = error;
     }
 }
