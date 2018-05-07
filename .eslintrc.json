@@ -6,30 +6,45 @@
     "plugins": [
         "flowtype"
     ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module"
+    },
     "extends": "google",
     "rules": {
-        "array-bracket-spacing": [ "error", "always" ],
-        "arrow-parens": ["error", "always"],
-        "brace-style": [ "error", "stroustrup" ],
+        "valid-jsdoc": "warn",
+        "no-irregular-whitespace": "warn",
+        "spaced-comment": "warn",
+        "no-tabs": "warn",
+        "no-var": "warn",
+        "comma-spacing": "warn",
+        "curly": "warn",
+        "no-unused-vars": "warn",
+        "new-cap": "warn",
+        "space-before-function-paren": "warn",
+        "block-spacing": "warn",
+        "array-bracket-spacing": [ "warn", "always" ],
+        "arrow-parens": ["warn", "always"],
+        "brace-style": [ "warn", "stroustrup" ],
         "camelcase": "off",
         "comma-dangle": "off",
-        "computed-property-spacing": [ "error", "always" ],
+        "computed-property-spacing": [ "warn", "always" ],
         "eol-last": "off",
-        "indent": [ "error", 2, { "SwitchCase": 1 } ],
+        "indent": [ "warn", 2, { "SwitchCase": 1 } ],
         "key-spacing": "off",
-        "keyword-spacing": [ "error", { "before" : true, "after" : true } ],
-        "linebreak-style": [ "error", "unix" ],
+        "keyword-spacing": [ "warn", { "before" : true, "after" : true } ],
+        "linebreak-style": [ "warn", "unix" ],
         "max-len": "off",
         "no-multi-spaces": "off",
-        "no-trailing-spaces": ["error", { "skipBlankLines": true } ],
-        "object-curly-spacing": [ "error", "always" ],
+        "no-trailing-spaces": ["warn", { "skipBlankLines": true } ],
+        "object-curly-spacing": [ "warn", "always" ],
         "one-var": "off",
         "padded-blocks": "off",
-        "quotes": [ "error", "single" ],
+        "quotes": [ "warn", "single" ],
         "require-jsdoc": "off",
-        "semi": [ "error", "always" ],
+        "semi": [ "warn", "always" ],
         "space-before-blocks": "off",
-        "space-in-parens": [ "error", "always" ]
+        "space-in-parens": [ "warn", "always" ]
     }
   }
   

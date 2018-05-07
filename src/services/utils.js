@@ -7,7 +7,7 @@ import _ from 'lodash';
 
 class Utils {
 
-    moment = moment;
+    moment: any;
 
     Alerty( message: string ) {
         return Alerty.alert( message );
@@ -113,5 +113,7 @@ class Utils {
     }
 
 }
+
+Utils.prototype.moment = moment;
 
 export default new Utils();

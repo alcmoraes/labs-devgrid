@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /*!
  * alerty v0.0.1 (https://github.com/undead25/alerty#readme)
  * Copyright 2016 undead25
