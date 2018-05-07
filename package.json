@@ -76,7 +76,8 @@
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
     "eslint-plugin-flowtype": "^2.46.3",
-    "flow-bin": "^0.71.0"
+    "flow-bin": "^0.71.0",
+    "pouchdb-adapter-memory": "^6.4.3"
   },
   "jest": {
     "collectCoverageFrom": [

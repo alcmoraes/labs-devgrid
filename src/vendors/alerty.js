@@ -7,7 +7,7 @@
  */
 
   // common function which is often using
-  var commonUse = {
+  let commonUse = {
     /**
      * [Add class to element]
      *
@@ -15,9 +15,9 @@
      * @param cls {String}  -- classes.
      */
     addClass: function(el, cls) {
-      var elClass = el.className;
-      var blank = (elClass !== '') ? ' ' : '';
-      var added = elClass + blank + cls;
+      let elClass = el.className;
+      let blank = (elClass !== '') ? ' ' : '';
+      let added = elClass + blank + cls;
       el.className = added;
     },
 
@@ -28,9 +28,9 @@
      * @param cls {String}  -- classes.
      */
     removeClass: function(el, cls) {
-      var elClass = ' '+el.className+' ';
+      let elClass = ' '+el.className+' ';
       elClass = elClass.replace(/(\s+)/gi, ' ');
-      var removed = elClass.replace(' '+cls+' ', ' ');
+      let removed = elClass.replace(' '+cls+' ', ' ');
       removed = removed.replace(/(^\s+)|(\s+$)/g, '');
       el.className = removed;
     },
@@ -44,9 +44,9 @@
      * @return  {Boolean}   -- true or false.
      */
     hasClass: function(el, cls) {
-      var elClass = el.className;
-      var elClassList = elClass.split(/\s+/);
-      var x = 0;
+      let elClass = el.className;
+      let elClassList = elClass.split(/\s+/);
+      let x = 0;
       for(x in elClassList) {
         if(elClassList[x] === cls) {
           return true;
@@ -120,10 +120,10 @@
    *
    * @return {Object}
    */
-  var Alerty = function() {
+  let Alerty = function() {
 
     // private object for Alerty object inherit
-    var Dialog = {
+    let Dialog = {
       
       // static defaults params
       defaults: {
@@ -164,23 +164,23 @@
        */
       setup: function(type, content, opts, onOk, onCancel) {
         // for if argument opts is not given.
-        var detect = typeof opts === 'function';
+        let detect = typeof opts === 'function';
         if (detect) {
           onCancel = onOk;
           onOk = opts;
         }
 
-        var $oldModal = document.querySelector('.alerty');
+        let $oldModal = document.querySelector('.alerty');
 
 
         // if previous modal is open, remove it and immediately callback
         if ($oldModal) {
           commonUse.removeElement($oldModal);
-          var _callback = this.previousCallback;
+          let _callback = this.previousCallback;
           if (_callback) _callback();
         }
 
-        var $wrapper = document.createElement('div');
+        let $wrapper = document.createElement('div');
         $wrapper.innerHTML = this.template;
 
         // append alerty to body
@@ -189,15 +189,15 @@
         }
 
         // cache alerty dom for next use
-        var $modal = document.querySelector('.alerty');
-        var $overlay = document.querySelector('.alerty-overlay');
-        var $title = $modal.querySelector('.alerty-title');
-        var $message = $modal.querySelector('.alerty-message');
-        var $btnArea = $modal.querySelector('.alerty-action');
-        var $btnOk = $modal.querySelector('.btn-ok');
-        var $btnCancel = $modal.querySelector('.btn-cancel');
-        var $prompt = $modal.querySelector('.alerty-prompt');
-        var $input = $prompt.querySelector('input');
+        let $modal = document.querySelector('.alerty');
+        let $overlay = document.querySelector('.alerty-overlay');
+        let $title = $modal.querySelector('.alerty-title');
+        let $message = $modal.querySelector('.alerty-message');
+        let $btnArea = $modal.querySelector('.alerty-action');
+        let $btnOk = $modal.querySelector('.btn-ok');
+        let $btnCancel = $modal.querySelector('.btn-cancel');
+        let $prompt = $modal.querySelector('.alerty-prompt');
+        let $input = $prompt.querySelector('input');
 
         // set uid
         $modal.id = commonUse.setUid('alerty');
@@ -257,9 +257,9 @@
        * @param: onCancel {Function}  -- cancel callback.
        */
       bindEvent: function($modal, onOk, onCancel) {
-        var that = this;
-        var $btnOk = $modal.querySelector('.btn-ok');
-        var $btnCancel = $modal.querySelector('.btn-cancel');
+        let that = this;
+        let $btnOk = $modal.querySelector('.btn-ok');
+        let $btnCancel = $modal.querySelector('.btn-cancel');
 
         // toasts delay hide
         if (commonUse.hasClass($modal, 'toasts')) {
@@ -290,8 +290,8 @@
        * @param: callback {Function}  -- callback function.
        */
       close: function($modal, callback) {
-        var $input = $modal.querySelector('input');
-        var $overlay = document.getElementById('overlay-'+$modal.id);
+        let $input = $modal.querySelector('input');
+        let $overlay = document.getElementById('overlay-'+$modal.id);
 
         // hide alerty with animation
         commonUse.removeClass($modal, 'alerty-show');
