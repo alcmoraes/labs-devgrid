@@ -150,7 +150,7 @@ export default class Home extends Screen<Props, State> {
                                   {b.first_publish_year}
                                 </td>
                                 <td>
-                                  {Utils.moment( b.readAt ).format( 'YYYY/MM/DD' )}
+                                  {Utils.moment( b.readedAt ).format( 'YYYY/MM/DD' )}
                                 </td>
                               </tr>
                             );
