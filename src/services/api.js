@@ -1,13 +1,12 @@
 // @flow
 
 import _ from 'lodash';
-import NProgress from 'nprogress';
 
 const Modes = {
-    'cors': 'cors',
-    'no-cors': 'no-cors',
-    'same-origin': 'same-origin'
-}
+  'cors': 'cors',
+  'no-cors': 'no-cors',
+  'same-origin': 'same-origin'
+};
 
 class Api {
 
@@ -17,129 +16,133 @@ class Api {
 
     constructor(){
 
-        this.endpoint = '';
-        this.mode = 'no-cors';
+      this.endpoint = '';
+      this.mode = 'no-cors';
 
-        this.headers = {
-            'Accept': 'application/json'
-        }
+      this.headers = {
+        'Accept': 'application/json'
+      };
 
     }
 
     setMode( mode: $Keys<typeof Modes> ): void {
-        this.mode = mode;
+      this.mode = mode;
     }
 
     /**
-     * 
+     *
      * @param {string} endpoint Sets the endpoint to fetch
      */
-    setEndpoint(endpoint: string): void {
-        this.endpoint = endpoint;
-        return;
+    setEndpoint( endpoint: string ): void {
+      this.endpoint = endpoint;
+      return;
     }
 
     /**
-     * 
+     *
      * @param {Object} headers The headers to set
      * @param {boolean} replace True if want to replace the current headers
      * @return {void}
      */
-    setHeaders(headers: Object, replace?: boolean = false): void {
-        this.headers = replace ? headers : _.merge( this.headers, headers );
-        return;
+    setHeaders( headers: Object, replace?: boolean = false ): void {
+      this.headers = replace ? headers : _.merge( this.headers, headers );
+      return;
     }
     
     /**
-     * 
+     *
      * @param {string} url The url to fetch
      * @param {string} base Replaces the default endpoint
-     * @returns {Promise} A promise with the data parsed as json
+     * @return {Promise} A promise with the data parsed as json
      */
-    get(url: string, base?: ?string = null): Promise<any> {
-        return new Promise(async (resolve, reject) => {
-            try {
-                let data = await fetch((base || this.endpoint) + url, {
-                    method: 'GET',
-                    headers: new Headers(this.headers),
-                    mode: this.mode,
-                    cache: 'default'
-                });
-                resolve( data.json() );
-            } catch ( ERR ) {
-                reject( ERR );
-            }
-        });
+    get( url: string, base?: ?string = null ): Promise<any> {
+      return new Promise( async ( resolve, reject ) => {
+        try {
+          let data = await fetch( ( base || this.endpoint ) + url, {
+            method: 'GET',
+            headers: new Headers( this.headers ),
+            mode: this.mode,
+            cache: 'default'
+          } );
+          resolve( data.json() );
+        }
+        catch ( ERR ) {
+          reject( ERR );
+        }
+      } );
     }
     
     /**
-     * 
+     *
      * @param {string} url The url to fetch
      * @param {string} base Replaces the default endpoint
-     * @returns {Promise} A promise with the data parsed as json
+     * @return {Promise} A promise with the data parsed as json
      */
-    delete(url: string, base?: ?string = null): Promise<any> {
-        return new Promise(async (resolve, reject) => {
-            try {
-                let data = await fetch((base || this.endpoint) + url, {
-                    method: 'DELETE',
-                    headers: new Headers(this.headers),
-                    mode: this.mode,
-                    cache: 'default'
-                });
-                resolve(data.json());
-            } catch ( ERR ) {
-                reject( ERR );
-            }
-        });
+    delete( url: string, base?: ?string = null ): Promise<any> {
+      return new Promise( async ( resolve, reject ) => {
+        try {
+          let data = await fetch( ( base || this.endpoint ) + url, {
+            method: 'DELETE',
+            headers: new Headers( this.headers ),
+            mode: this.mode,
+            cache: 'default'
+          } );
+          resolve( data.json() );
+        }
+        catch ( ERR ) {
+          reject( ERR );
+        }
+      } );
     }
     
     /**
-     * 
+     *
      * @param {string} url The url to fetch
      * @param {Object} body The content to put
      * @param {string} base Replaces the default endpoint
-     * @returns {Promise} A promise with the data parsed as json
+     * @return {Promise} A promise with the data parsed as json
      */
-    put(url: string, body: Object, base?: ?string = null): Promise<any> {
-        return new Promise(async (resolve, reject) => {
-            try {
-                let data = await fetch((base || this.endpoint) + url, {
-                    method: 'PUT',
-                    headers: new Headers(this.headers),
-                    body: JSON.stringify(body),
-                    mode: this.mode,
-                    cache: 'default'
-                });
-                resolve(data.json());
-            } catch ( ERR ) {
-                reject( ERR );
-            }
-        });
+    put( url: string, body: Object, base?: ?string = null ): Promise<any> {
+      return new Promise( async ( resolve, reject ) => {
+        try {
+          let data = await fetch( ( base || this.endpoint ) + url, {
+            method: 'PUT',
+            headers: new Headers( this.headers ),
+            body: JSON.stringify( body ),
+            mode: this.mode,
+            cache: 'default'
+          } );
+          resolve( data.json() );
+        }
+        catch ( ERR ) {
+          reject( ERR );
+        }
+      } );
     }
     
     /**
-     * 
+     *
      * @param {string} url The url to fetch
      * @param {Object} body The content to post
      * @param {string} base Replaces the default endpoint
-     * @returns {Promise} A promise with the data parsed as json
+     * @return {Promise} A promise with the data parsed as json
      */
-    post(url: string, body: Object, base?: ?string = null): Promise<any> {
-        return new Promise(async (resolve, reject) => {
-            try {
-                let data = await fetch((base || this.endpoint) + url, {
-                    method: 'POST',
-                    headers: new Headers(this.headers),
-                    body: JSON.stringify(body),
-                    mode: this.mode,
-                    cache: 'default'
-                });
-                resolve(data.json());
-            } catch ( ERR ) {
-                reject( ERR );
-            }
-        });
+    post( url: string, body: Object, base?: ?string = null ): Promise<any> {
+      return new Promise( async ( resolve, reject ) => {
+        try {
+          let data = await fetch( ( base || this.endpoint ) + url, {
+            method: 'POST',
+            headers: new Headers( this.headers ),
+            body: JSON.stringify( body ),
+            mode: this.mode,
+            cache: 'default'
+          } );
+          resolve( data.json() );
+        }
+        catch ( ERR ) {
+          reject( ERR );
+        }
+      } );
     }
 
 }

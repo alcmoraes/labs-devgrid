@@ -1,4 +1,4 @@
-//@flow 
+// @flow
 import React, { Fragment } from 'react';
 import _ from 'lodash';
 
@@ -10,7 +10,16 @@ import Layout from '../components/layout';
 
 import BookCard from '../components/book_card';
 
-export default class MyBooks extends Screen {
+type Props = {
+
+}
+
+type State = {
+
+}
+export default class MyBooks extends Screen<Props, State> {
+
+  state: any;
 
   constructor( props: any ){
     super( props );
@@ -20,16 +29,16 @@ export default class MyBooks extends Screen {
 
   componentDidMount(): void {
     super.componentDidMount();
-    super._getAction('Book').fetchMyBooks();
+    super._getAction( 'Book' ).fetchMyBooks();
   }
 
   render() {
     let unreaded = [];
     let readed = {};
 
-    if(this.state){
-      unreaded = _.filter(this.state.bookStore_MyBooks, (b) => !b.read );
-      readed = _.groupBy( _.filter(this.state.bookStore_MyBooks, (b) => b.read ), (b) => Utils.moment(b.readedAt).format('YYYY') )
+    if ( this.state ){
+      unreaded = _.filter( this.state.bookStore_MyBooks, ( b ) => !b.read );
+      readed = _.groupBy( _.filter( this.state.bookStore_MyBooks, ( b ) => b.read ), ( b ) => Utils.moment( b.readedAt ).format( 'YYYY' ) );
     }
 
     return (
@@ -41,14 +50,14 @@ export default class MyBooks extends Screen {
                 <i className="fa fa-book"></i> Unreaded ({unreaded.length})
               </div>
               <div className="card-body">
-              <section className="books-shelf">
-              {unreaded.map((b, i) => {
-                  return (
+                <section className="books-shelf">
+                  {unreaded.map( ( b, i ) => {
+                    return (
                       <BookCard key={i} read={b.read} onLibrary={true} book={b} />
-                  )
-              })}
-            </section>
-                </div>
+                    );
+                  } )}
+                </section>
+              </div>
             </div>
           </div>
           <div className="col-lg-6">
@@ -60,17 +69,17 @@ export default class MyBooks extends Screen {
                 { Object.keys( readed ).map( ( year, i ) => {
                   return (
                     <Fragment key={i}>
-                      <h6 className="text-center">{ year } ({readed[year].length})</h6>
-                      <section className="books-shelf">                    
-                        {readed[year].map(( b, ind ) => {
+                      <h6 className="text-center">{ year } ({readed[ year ].length})</h6>
+                      <section className="books-shelf">
+                        {readed[ year ].map( ( b, ind ) => {
                           return (
                             <BookCard key={ind} read={b.read} onLibrary={true} book={b} />
-                          )
-                        })}
+                          );
+                        } )}
                       </section>
                     </Fragment>
-                  )
-                }) }
+                  );
+                } ) }
               </div>
             </div>
           </div>

@@ -1,13 +1,15 @@
 // @flow
 
-import { Alt, Dispatcher } from '../services/alt';
-import NProgress from 'nprogress/nprogress';
+import {
+  Alt,
+  dispatcher
+} from '../services/alt';
 
 class LayerActions {
-    
-    throwError( error: string ): Alt.dispatch {
-        return Dispatcher( error );
-    }
+
+  throwError( error: string ): Alt.dispatch {
+    return dispatcher( error );
+  }
 
 }
 
