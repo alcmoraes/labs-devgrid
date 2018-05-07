@@ -25,6 +25,18 @@ class Nav extends Component<Props> {
       document.body.classList.add( 'fixed-nav', 'sticky-footer', 'bg-dark' );
     }
 
+    window.$( '#sidenavToggler' ).click( function( e ) {
+      e.preventDefault();
+      window.$( 'body' ).toggleClass( 'sidenav-toggled' );
+      window.$( '.navbar-sidenav .nav-link-collapse' ).addClass( 'collapsed' );
+      window.$( '.navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level' ).removeClass( 'show' );
+    } );
+
+    window.$( '.navbar-sidenav .nav-link-collapse' ).click( function( e ) {
+      e.preventDefault();
+      window.$( 'body' ).removeClass( 'sidenav-toggled' );
+    } );
+
   }
 
   _searchBook( e: Event ): void {
