@@ -32,7 +32,7 @@ ReactDOM.render(
     <Router>
         <Switch>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/search/:book" component={Search}/>
+            <Route exact path="/search/:book?" component={Search}/>
             <Route exact path="/my-books" component={MyBooks}/>
         </Switch>
     </Router>,

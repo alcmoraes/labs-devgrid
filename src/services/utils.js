@@ -3,11 +3,7 @@
 import Alerty from '../vendors/alerty';
 
 import moment from 'moment-timezone';
-import 'moment/locale/pt-br';
 import _ from 'lodash';
-
-moment.locale('pt-BR');
-moment.tz.setDefault("America/Sao_Paulo");
 
 class Utils {
 

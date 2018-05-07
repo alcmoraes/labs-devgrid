@@ -28,4 +28,4 @@ class LayerStore {
     }
 }
 
-export default Alt.createStore(LayerStore, 'LayerStore');
+export default Alt.createStore( LayerStore, 'LayerStore');

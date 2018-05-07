@@ -44,8 +44,14 @@ class Nav extends Component {
                     <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
                         <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                             <Link className="nav-link" to="/">
-                                <i className="fa fa-fw fa-area-chart"></i>
+                                <i className="fa fa-fw fa-chart-line"></i>
                                 <span className="nav-link-text">Dashboard</span>
+                            </Link>
+                        </li>
+                        <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                            <Link className="nav-link" to="/search">
+                                <i className="fa fa-fw fa-search"></i>
+                                <span className="nav-link-text">Search</span>
                             </Link>
                         </li>
                         <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
@@ -66,7 +72,7 @@ class Nav extends Component {
                         <li className="nav-item">
                             <form onSubmit={this._searchBook} className="form-inline my-2 my-lg-0 mr-lg-2">
                                 <div className="input-group">
-                                    <input ref="book-search" className="form-control" type="text" defaultValue={ this.props.match.params.book ? decodeURIComponent( this.props.match.params.book ).replace(/\+/g, ' ') : '' } placeholder="Search book..." />
+                                    <input ref="book-search" className="form-control" type="text" defaultValue={ this.props.match.params.book ? decodeURIComponent( this.props.match.params.book ).replace(/\+/g, ' ') : '' } placeholder="Search books" />
                                     <span className="input-group-append">
                                         <button onClick={this._searchBook} className="btn btn-primary" type="button">
                                             <i className="fa fa-search"></i>

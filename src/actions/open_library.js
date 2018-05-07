@@ -29,6 +29,7 @@ class OpenLibraryActions {
                 this.setBooks( books.docs || [] );
             }
             catch( ERR ){
+                NProgress.done();
                 LayerActions.throwError( ERR );
             }   
         }

@@ -31,17 +31,24 @@ export default class Search extends Screen {
   render() {
     return (
       <Layout { ...this.props }>
-        <section className="books-shelf">
-          { this.state ? (
-            this.state.openLibraryStore_Books.map((b, i) => {
-              let maBook = _.find( this.state.bookStore_MyBooks, (mB) => mB.key === b.key );
-              if( maBook ) console.log(`${maBook.key} found!`);
-              return (
-                  <BookCard key={i} read={maBook ? maBook.read : false} onLibrary={Boolean( maBook )} book={b} />
-              )
-            })
-          ) : null }
-        </section>
+        <div className="card mb-3">
+          <div className="card-header">
+            <i className="fa fa-book"></i> Book search
+          </div>
+            <div className="card-body">
+            <section className="books-shelf">
+              { this.state ? (
+                this.state.openLibraryStore_Books.map((b, i) => {
+                  let maBook = _.find( this.state.bookStore_MyBooks, (mB) => mB.key === b.key );
+                  if( maBook ) console.log(`${maBook.key} found!`);
+                  return (
+                      <BookCard key={i} read={maBook ? maBook.read : false} onLibrary={Boolean( maBook )} book={b} />
+                  )
+                })
+              ) : null }
+            </section>
+            </div>
+        </div>
       </Layout>
     );
   }

@@ -4,8 +4,13 @@ import _ from 'lodash';
 import { Alt, Dispatcher } from '../services/alt';
 import NProgress from 'nprogress/nprogress';
 import Utils from '../services/utils';
+import Toastr from 'toastr';
 
 import PouchDB from 'pouchdb';
+
+Toastr.options = {
+    "positionClass": "toast-bottom-left"
+}
 
 class BookActions {
     
@@ -39,27 +44,30 @@ class BookActions {
                     try {
                         let dbaseBook = await this.db.myBooks.get( book.key );
                         console.log(`Removing book #${dbaseBook.key} REV:${dbaseBook._rev}`);
-                        await this.db.myBooks.remove( dbaseBook._id, dbaseBook._rev )
+                        await this.db.myBooks.remove( dbaseBook._id, dbaseBook._rev );
                     } catch ( ERR ){
-                        console.log( ERR );
+                        Toastr.error( ERR.message );
+                        throw new Error( ERR );
                     }
 
                 }
                 
                 console.log('Done!');
+                Toastr.info(`#${book.key.split('/').pop()} ${onLibrary ? 'added!' : 'removed!'}`);
                 return dispatch(_.merge( book, { onLibrary: onLibrary } ));
         }
     }
 
-    toggleBookStatus(id: string, read: boolean = false): Alt.dispatch {
+    toggleBookStatus(id: string, read: boolean = false, additionalChanges: Object = {}): Alt.dispatch {
         return async ( dispatch ) => {
             try {
                 let book = await this.db.myBooks.get( id );
-                console.log( book );
-                await this.db.myBooks.put( _.merge( book, { read: read, updatedAt: Utils.moment().format('YYYY-MM-DD HH:mm:SS') } ) );
+                await this.db.myBooks.put( _.merge( book, { read: read, updatedAt: Utils.moment().format('YYYY-MM-DD HH:mm:SS'), ...additionalChanges } ) );
+                Toastr.info(`#${book.key.split('/').pop()} ${read ? 'marked readed!' : 'marked unreaded!'}`);
                 return dispatch(_.merge( book, { read: read } ));
             }
             catch( ERR ){
+                Toastr.error( ERR.message );
                 throw new Error( ERR );
             }
         }
