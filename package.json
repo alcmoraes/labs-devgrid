@@ -36,12 +36,6 @@
     "eject": "react-scripts eject",
     "flow": "flow"
   },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "<rootDir>/src/stores",
-      "<rootDir>/src/actions"
-    ]
-  },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
