@@ -1,8 +1,8 @@
 # Book Maniac
+**Obs.: This was a challenge made by @alcmoraes for Cheesecake Labs agency**
 
 ## An offline-first SPA project for DevGrid
 
-**Obs.: This was a challenge made by @alcmoraes for Cheesecake Labs agency**
 
 ![Build Status](https://ci.doisbit.com/buildStatus/icon?job=Book+Maniac&style=plastic&.png)
 [![Code Climate](https://codeclimate.com/github/alcmoraes/labs-devgrid/badges/gpa.svg)](https://codeclimate.com/github/alcmoraes/labs-devgrid)
